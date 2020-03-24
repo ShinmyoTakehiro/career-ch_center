@@ -1,0 +1,23 @@
+{
+    "short_name": "career-ch-BASE",
+    "name": "キャリチャン会員、イベント参加者のdb",
+    "icons": [
+      {
+        "src": "career-ch_icon-1x.png",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "src": "career-ch_icon-2x.png",
+        "type": "image/png",
+        "sizes": "96x96"
+      },
+      {
+        "src": "career-ch_icon-4x.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ],
+    "display": "standalone",
+    "start_url": "https://practice.zca-service.com/career-ch/"
+  }

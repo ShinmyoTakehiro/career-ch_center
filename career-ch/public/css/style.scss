@@ -1,0 +1,343 @@
+$font_color : #636b6f;
+$fonts:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji", 'Nunito', sans-serif;
+
+
+html{
+   
+    body{
+        background-color: #fff;
+        color: $font_color;
+        font-family: $fonts ;
+        font-weight: 200;
+        height: 100vh;
+
+        ul{
+            padding: 0;
+        }
+
+        .navbar {
+            
+
+            .form-inline{
+                display: contents;
+                .nav-link{
+                    background-color: #343a40;
+                    border: none;
+                    color: rgba(255, 255, 255, .5);
+                }
+
+               
+            }
+            .form-control{
+                padding: .75rem 1rem;
+                border-width: 0;
+                border-radius: 0;
+            } 
+            
+            .navbar-brand{
+                padding-top: .75rem;
+                padding-bottom: .75rem;
+                font-size: 1.2rem;
+                background-color: rgba(0, 0, 0, .25);
+                box-shadow: inset 1px 0 0 rgba(0, 0, 0, .25);
+            }
+        }
+
+        .form-control-dark{
+            color: #fff;
+            background-color: rgba(255, 255, 255, .1);
+            border-color: rgba(255, 255, 255, .1);  
+        }
+
+        .sidebar{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 52px 0 0;
+            box-shadow:inset -1px 0 0 rgba(0, 0, 0, .1) ;
+
+            .nav-link{
+                font-weight: 500;
+                color: #333;
+
+                &.active{
+                    color: #007bff;
+                }
+            }
+
+        }
+
+        .selector-for-some-widget{
+            box-sizing: border-box;
+        }
+
+
+        .full-height{
+            height: 100vh;
+        }
+
+        [role="main"]{
+            padding-top: 52px;
+          .table{  
+                padding-bottom: 5%;
+                width: auto;
+            h2{
+                font-size: 1.8rem;
+                padding: 22px 0;
+                position: absolute;
+                &[data-group="full"]{
+                    display: block;
+                }
+
+                &[data-group="fes"]{
+                    display: none;
+                }
+                &[data-group="selection"]{
+                    display: none;
+                }
+                &[data-group="womenf"]{
+                    display: none;
+                }
+                &[data-group="ladyselct"]{
+                    display: none;
+                }
+                &[data-group="fea"]{
+                    display: none;
+                }
+                &[data-group="matching"]{
+                    display: none;
+                }
+                &[data-group="requrutevent"]{
+                        display: none;
+                    } 
+                    &[data-group="interviewevent"]{
+                    display: none;
+                } 
+                &[data-group="exhibition"]{
+                    display: none;
+                } 
+                &[data-group="event10"]{
+                    display: none;
+                }
+                &[data-group="event11"]{
+                    display: none;
+                }&[data-group="event12"]{
+                    display: none;
+                }&[data-group="event13"]{
+                    display: none;
+                }&[data-group="event14"]{
+                    display: none;
+                }&[data-group="event15"]{
+                    display: none;
+                }    
+                &[data-group="easy"]{
+                    display: none;
+                }
+
+
+
+
+
+            }
+            }  
+
+           .btn-group{
+               display: inline-block;
+
+            .btn{
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+            }
+           } 
+        }
+
+        .flex-center{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .position-ref {
+            position: relative;
+        }
+        div{
+
+        
+        table{
+
+            &[data-group="full"]{
+                display: table;
+            }
+
+            &[data-group="fes"]{
+                display: none;
+            }
+            &[data-group="selection"]{
+                display: none;
+            }
+            &[data-group="womenf"]{
+                display: none;
+            }
+            &[data-group="ladyselct"]{
+                display: none;
+            }
+            &[data-group="fea"]{
+                display: none;
+            }
+            &[data-group="matching"]{
+                display: none;
+            }
+            &[data-group="requrutevent"]{
+                    display: none;
+                } 
+                &[data-group="interviewevent"]{
+                display: none;
+            } 
+            &[data-group="exhibition"]{
+                display: none;
+            } 
+            &[data-group="event10"]{
+                display: none;
+            }
+            &[data-group="event11"]{
+                display: none;
+            }&[data-group="event12"]{
+                display: none;
+            }&[data-group="event13"]{
+                display: none;
+            }&[data-group="event14"]{
+                display: none;
+            }&[data-group="event15"]{
+                display: none;
+            }    
+            &[data-group="easy"]{
+                display: none;
+            }    
+
+        .scrollhead{
+            display: block;
+        }
+
+        .scrollbody{
+            display: block;
+            overflow-y: scroll;
+            height: 600px;
+        }
+
+        .table-id{
+            min-width: 65px;
+        }
+
+        .table-name{
+            // width:15% ;
+            min-width: 140px;
+            max-width: 140px;
+        }
+
+        .table-college{
+            min-width: 200px;
+        }
+
+        .table-grad{
+            min-width: 130px;
+        }
+
+        .table-since{
+            // width: 120px;
+            min-width: 150px;
+        }
+
+
+        .table-tel{
+            // width: 145px;
+            min-width: 175px;
+        }
+        .table-email{
+            // width: 298px;
+            min-width: 356px;
+        }
+
+        .table-time{
+            min-width: 300px;
+            // width: 9999px;
+        }
+
+        .schedule{
+            display: flex;
+            // display: inline-flex;
+            button{
+                border: none;
+                background-color: transparent;
+            }
+            #schedule-yes{
+                font-size: 15px;
+                // padding: 0 4px;
+                color: #0ABF6A;
+            }
+
+            #schedule-non{
+                font-size: 17px;
+                color: #F23838;
+            }
+        }
+
+
+
+        .table-status{
+            width:900px;
+
+            .status-text{
+                width: 45px;
+                height: 45px;
+                border: 2px solid #79797980;
+                border-radius: 9px;
+                font-weight:600 ;
+                text-align: center;
+                line-height: 1.3rem;
+                color: #79797980;
+
+                &.done{
+                    border-color:#F20C1F ;
+                    color: #F20C1F;
+                }
+            } 
+        }
+
+        .table2-id{
+            min-width: 70px;
+        }
+
+        .table2-event{
+            min-width: 170px;
+        }
+        .table2-name{
+            min-width: 129px;
+        }
+        .table2-kana{
+            min-width: 200px;
+        }
+        .table2-college{
+            min-width: 190px;
+        }
+        .table2-graduation{
+            min-width:100px;
+            // text-align: center;
+        }
+        .table2-email{
+            min-width: 311px;
+        }
+        .table2-tel{
+            min-width: 160px;
+        }
+
+        .table2-date{
+            width: 9999px;
+            min-width: 200px;
+        }
+    }
+    } 
+    }
+}
+

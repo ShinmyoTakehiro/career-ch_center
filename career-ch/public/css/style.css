@@ -1,0 +1,369 @@
+html body {
+  background-color: #fff;
+  color: #636b6f;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Nunito", sans-serif;
+  font-weight: 200;
+  height: 100vh;
+}
+
+html body ul {
+  padding: 0;
+}
+
+html body .navbar .form-inline {
+  display: contents;
+}
+
+html body .navbar .form-inline .nav-link {
+  background-color: #343a40;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+html body .navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+html body .navbar .navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1.2rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.25);
+          box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.25);
+}
+
+html body .form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+html body .sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 52px 0 0;
+  -webkit-box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+          box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+html body .sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+html body .sidebar .nav-link.active {
+  color: #007bff;
+}
+
+html body .selector-for-some-widget {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html body .full-height {
+  height: 100vh;
+}
+
+html body [role="main"] {
+  padding-top: 52px;
+}
+
+html body [role="main"] .table {
+  padding-bottom: 5%;
+  width: auto;
+}
+
+html body [role="main"] .table h2 {
+  font-size: 1.8rem;
+  padding: 22px 0;
+  position: absolute;
+}
+
+html body [role="main"] .table h2[data-group="full"] {
+  display: block;
+}
+
+html body [role="main"] .table h2[data-group="fes"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="selection"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="womenf"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="ladyselct"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="fea"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="matching"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="requrutevent"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="interviewevent"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="exhibition"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="event10"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="event11"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="event12"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="event13"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="event14"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="event15"] {
+  display: none;
+}
+
+html body [role="main"] .table h2[data-group="easy"] {
+  display: none;
+}
+
+html body [role="main"] .btn-group {
+  display: inline-block;
+}
+
+html body [role="main"] .btn-group .btn {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+html body .flex-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+html body .position-ref {
+  position: relative;
+}
+
+html body div table[data-group="full"] {
+  display: table;
+}
+
+html body div table[data-group="fes"] {
+  display: none;
+}
+
+html body div table[data-group="selection"] {
+  display: none;
+}
+
+html body div table[data-group="womenf"] {
+  display: none;
+}
+
+html body div table[data-group="ladyselct"] {
+  display: none;
+}
+
+html body div table[data-group="fea"] {
+  display: none;
+}
+
+html body div table[data-group="matching"] {
+  display: none;
+}
+
+html body div table[data-group="requrutevent"] {
+  display: none;
+}
+
+html body div table[data-group="interviewevent"] {
+  display: none;
+}
+
+html body div table[data-group="exhibition"] {
+  display: none;
+}
+
+html body div table[data-group="event10"] {
+  display: none;
+}
+
+html body div table[data-group="event11"] {
+  display: none;
+}
+
+html body div table[data-group="event12"] {
+  display: none;
+}
+
+html body div table[data-group="event13"] {
+  display: none;
+}
+
+html body div table[data-group="event14"] {
+  display: none;
+}
+
+html body div table[data-group="event15"] {
+  display: none;
+}
+
+html body div table[data-group="easy"] {
+  display: none;
+}
+
+html body div table .scrollhead {
+  display: block;
+}
+
+html body div table .scrollbody {
+  display: block;
+  overflow-y: scroll;
+  height: 600px;
+}
+
+html body div table .table-id {
+  min-width: 65px;
+}
+
+html body div table .table-name {
+  min-width: 140px;
+  max-width: 140px;
+}
+
+html body div table .table-college {
+  min-width: 200px;
+}
+
+html body div table .table-grad {
+  min-width: 130px;
+}
+
+html body div table .table-since {
+  min-width: 150px;
+}
+
+html body div table .table-tel {
+  min-width: 175px;
+}
+
+html body div table .table-email {
+  min-width: 356px;
+}
+
+html body div table .table-time {
+  min-width: 300px;
+}
+
+html body div table .schedule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+html body div table .schedule button {
+  border: none;
+  background-color: transparent;
+}
+
+html body div table .schedule #schedule-yes {
+  font-size: 15px;
+  color: #0ABF6A;
+}
+
+html body div table .schedule #schedule-non {
+  font-size: 17px;
+  color: #F23838;
+}
+
+html body div table .table-status {
+  width: 900px;
+}
+
+html body div table .table-status .status-text {
+  width: 45px;
+  height: 45px;
+  border: 2px solid #79797980;
+  border-radius: 9px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.3rem;
+  color: #79797980;
+}
+
+html body div table .table-status .status-text.done {
+  border-color: #F20C1F;
+  color: #F20C1F;
+}
+
+html body div table .table2-id {
+  min-width: 70px;
+}
+
+html body div table .table2-event {
+  min-width: 170px;
+}
+
+html body div table .table2-name {
+  min-width: 129px;
+}
+
+html body div table .table2-kana {
+  min-width: 200px;
+}
+
+html body div table .table2-college {
+  min-width: 190px;
+}
+
+html body div table .table2-graduation {
+  min-width: 100px;
+}
+
+html body div table .table2-email {
+  min-width: 311px;
+}
+
+html body div table .table2-tel {
+  min-width: 160px;
+}
+
+html body div table .table2-date {
+  width: 9999px;
+  min-width: 200px;
+}
+/*# sourceMappingURL=style.css.map */
