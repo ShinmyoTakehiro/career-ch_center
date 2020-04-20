@@ -2,7 +2,7 @@
 
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-    <head>
+    <head lang="ja">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="{{ asset('public/favicon.ico') }}">
@@ -59,22 +59,25 @@
                 margin-bottom: 30px;
             }
         </style>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
     <body>
        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/career-ch/">Zeal Career</a>
-        {{-- <form class="form-inline" action="{{url('/serch')}}">
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" value="">
-        
-            <ul class="navbar-nav px-3">
-                <li class="nav-item text-nowrap">
-                <input type="submit" value="Search" class="nav-link">    
-             <a class="nav-link"  href="#">Search</a> 
-                </li>
-            </ul>
-         </form>     --}}
-         @yield('search')
+        {{--   
+         @yield('search') --}}
+           <!--↓↓ 検索フォーム ↓↓-->
+     <form class="form-inline" name="serch_form" action="{{url('/serch')}}" method="post"> 
+        @csrf
+        <input type="text" name="keyword" value="{{$keyword}}" class="form-control form-control-dark w-100" placeholder="serch">
+    
+         
+          <input type="submit" value="search" class="nav-link search">
+     
+        </form> 
+       
+        <!--↑↑ 検索フォーム ↑↑-->   
         </nav>     
       <div class="container-fluid">     
         <div class="row">  

@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://practice.zca-service.com/career-ch/'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -164,9 +164,10 @@ return [
 
         /*
          * Package Service Providers...
-         */
+        //  */
         // Way\Generators\GeneratorsServiceProvider::class,
         // Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+        // 
         /*
          * Application Service Providers...
          */
@@ -175,7 +176,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-       
+    //    Way\Generators\GeneratorsServiceProvider::class,
+    //    Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
 
     ],
 
@@ -225,6 +227,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        // 'DB' => Illuminate\Support\Facades\DB::class,
 
     ],
 

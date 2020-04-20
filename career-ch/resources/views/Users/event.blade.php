@@ -19,12 +19,14 @@
     <?php $num14=0;?>  @forelse ($event14 as $event14->event_id) <?php $num14++;?>  @empty 0 @endforelse
     <?php $num15=0;?>  @forelse ($event15 as $event15->event_id) <?php $num15++;?>  @empty 0 @endforelse
     <?php $num16=0;?> @forelse ($easy as $easy->event_id) <?php $num16++;?>  @empty 0 @endforelse
-
+    <?php $num17=0;?>  @forelse ($event17 as $event17->event_id) <?php $num17++;?>  @empty 0 @endforelse
+    <?php $num18=0;?>  @forelse ($event18 as $event18->event_id) <?php $num18++;?>  @empty 0 @endforelse
+    <?php $num19=0;?>  @forelse ($event19 as $event19->event_id) <?php $num19++;?>  @empty 0 @endforelse
 
 
         @section('title')
         <div class="event-title">
-        <div class="table">
+        <div id="table" class="table-head">
             <h2 data-group="full" class="eventkind">イベント参加者一覧　<?php echo $nums?>名</h2>
             <h2 data-group="fes" class="eventkind">アスリートフェス　<?php echo $num1?>名</h2>
             <h2 data-group="selection" class="eventkind">セレクション　<?php echo $num2?>名</h2>
@@ -42,6 +44,9 @@
             <h2 data-group="event14" class="eventkind">介護業界求人フェア　<?php echo $num14?>名</h2>
             <h2 data-group="event15" class="eventkind">リカツ　<?php echo $num15?>名</h2>
             <h2 data-group="easy" class="eventkind">楽スル就活　<?php echo $num16?>名</h2>
+            <h2 data-group="event17" class="eventkind">社の都就職　<?php echo $num17?>名</h2>
+            <h2 data-group="event18" class="eventkind">内定トラベル　<?php echo $num18?>名</h2>
+            <h2 data-group="event19" class="eventkind">Web面談　<?php echo $num19?>名</h2>
         </div>
             <ul class="btn-group">
                 <li data-group="full" class="btn btn-secondary active">全体</a> 
@@ -60,25 +65,28 @@
                 <li data-group="event13" class="btn btn-secondary">既卒・第二新卒向けサポート</a> 
                 <li data-group="event14" class="btn btn-secondary">介護業界求人フェア</a> 
                 <li data-group="event15" class="btn btn-secondary">リカツ</a> 
-
                 <li data-group="easy" class="btn btn-secondary">楽スル</a> 
+                <li data-group="event17" class="btn btn-secondary">社の都就職</a> 
+                <li data-group="event18" class="btn btn-secondary">内定トラベル</a> 
+                <li data-group="event19" class="btn btn-secondary">Web面談</a> 
+
                
 
             </ul>
         </div>    
         @endsection
-        @section('search')
+      {{--  @section('search')
           <!--↓↓ 検索フォーム ↓↓-->
-    <form class="form-inline" action="{{url('/serch')}}"> 
+     <form class="form-inline" action="{{url('/serch')}}"> 
     <input type="text" name="keyword" value="{{$keyword}}" class="form-control form-control-dark w-100" placeholder="serch">
 
      
       <input type="submit" value="search" class="nav-link search">
  
-    </form>
+    </form> 
    
     <!--↑↑ 検索フォーム ↑↑-->   
-        @endsection
+        @endsection--}}
           @section('active')
         <ul class="nav flex-column">
                     <li class="nav-item"><a class="nav-link " href="/career-ch/">Dashcoard</a></li>
@@ -91,7 +99,7 @@
         
 
 
-        <div class="table database table-responsive">
+        <div id="table" class="table database table-responsive" style="padding-bottom:36px; margin-bottom:0;">
             <table class=" table-striped table-sm eventkind" data-group="full">
                 <thead class="scrollhead">
                     <tr>
@@ -114,6 +122,11 @@
                   <?php $num=0;?>  
                 @forelse ($data as $data)
                 <?php $num++;?>
+                @if ($data->cancel_flg == 0)
+                    
+                
+                    
+                
                     <tr>
                     {{-- <td class="table2-id">{{$data->id}}</td> --}}
                     <td class="table2-id"><?php echo $num?></td>
@@ -151,6 +164,12 @@
                 <td class="table2-event">登録</td> 
                 @elseif((int)$data->event_id === 16)
                 <td class="table2-event">楽スル就活</td>
+                @elseif((int)$data->event_id === 17)
+                <td class="table2-event">社の都就職</td> 
+                @elseif((int)$data->event_id === 18)
+                <td class="table2-event">内定トラベル</td>
+                @elseif((int)$data->event_id === 19)
+                <td class="table2-event">Web面談</td>
                 @else
                 <td class="table2-event"></td>   
                 @endif   
@@ -164,6 +183,65 @@
                     <td class="table2-tel"><a href="tel:{{$data->tel}}">{{$data->tel}}</a></td>
                     <td class="table2-date"><a href="">{{$data->date}}　{{$data->start_time}}-{{$data->end_time}}</a></td>
                     </tr>
+                @else
+                {{-- キャンセル学生の背景色変更 --}}
+                <tr style="background-color:#ff8a7f;">
+                        {{-- <td class="table2-id">{{$data->id}}</td> --}}
+                        <td class="table2-id"><?php echo $num?></td>
+                    @if ((int)$data->event_id === 1)
+                    <td class="table2-event">アスリートフェス</td>
+                    @elseif((int)$data->event_id === 2)
+                    <td class="table2-event">セレクション</td> 
+                    @elseif((int)$data->event_id === 3)
+                    <td class="table2-event">ジールフェス</td> 
+                    @elseif((int)$data->event_id === 4)
+                    <td class="table2-event">セレクション(女子会)</td> 
+                    @elseif((int)$data->event_id === 5)
+                    <td class="table2-event">求人フェア</td> 
+                    @elseif((int)$data->event_id === 6)
+                    <td class="table2-event">マッチングイベント</td> 
+                    @elseif((int)$data->event_id === 7)
+                    <td class="table2-event">就活相談会</td> 
+                    @elseif((int)$data->event_id === 8)
+                    <td class="table2-event">模擬面接イベント</td>
+                    @elseif((int)$data->event_id === 9)
+                    <td class="table2-event">出遅れ＆やり直し就活</td>
+                    @elseif((int)$data->event_id === 10)
+                    <td class="table2-event">内定0脱出サポート</td>
+                    @elseif((int)$data->event_id === 11)
+                    <td class="table2-event">納得の内定就活</td>
+                    @elseif((int)$data->event_id === 12)
+                    <td class="table2-event">START UP 就活</td>
+                    @elseif((int)$data->event_id === 13)
+                    <td class="table2-event">既卒・第二新卒向けサポート</td>
+                    @elseif((int)$data->event_id === 14)
+                    <td class="table2-event">介護業界求人フェア</td>  
+                    @elseif((int)$data->event_id === 15)
+                    <td class="table2-event">リカツ</td>
+                    @elseif((int)$data->event_id === 100)
+                    <td class="table2-event">登録</td> 
+                    @elseif((int)$data->event_id === 16)
+                    <td class="table2-event">楽スル就活</td>
+                    @elseif((int)$data->event_id === 17)
+                    <td class="table2-event">社の都就職</td>
+                    @elseif((int)$data->event_id === 18)
+                    <td class="table2-event">内定トラベル</td>
+                    @elseif((int)$data->event_id === 19)
+                    <td class="table2-event">Web面談</td>
+                    @else
+                    <td class="table2-event"></td>   
+                    @endif   
+                    {{-- <td class="table2-event">{{$data->event_id}}</td> --}}
+                        {{-- <td>{{$data->user_name}}</td> --}}
+                        <td class="table2-name">{{$data->user_name}}</td>
+                        <td class="table2-kana">{{$data->user_kana}}</td>
+                        <td class="table2-college">{{$data->college}}</td>
+                        <td class="table2-graduation">{{$data->graduation}}卒</td>
+                        <td class="table2-email"><a href="mailto:{{$data->mail}}">{{$data->mail}}</a></td>
+                        <td class="table2-tel"><a href="tel:{{$data->tel}}">{{$data->tel}}</a></td>
+                        <td class="table2-date"><a href="">{{$data->date}}　{{$data->start_time}}-{{$data->end_time}}</a></td>
+                </tr>
+                @endif
                 @empty
                     <tr><td>現在参加者はいません</td></tr>
                 @endforelse
@@ -739,6 +817,114 @@
                     <td class="table2-email"><a href="mailto:{{$easy->mail}}">{{$easy->mail}}</a></td>
                     <td class="table2-tel"><a href="tel:{{$easy->tel}}">{{$easy->tel}}</a></td>
                     <td class="table2-date"><a href="">{{$easy->date}}　{{$easy->start_time}}-{{$easy->end_time}}</a></td>
+                    </tr>
+                @empty
+                    <tr><td>現在参加者はいません</td></tr>
+                @endforelse
+                    
+            </table>
+            <table class="table table-striped table-sm eventkind" data-group="event17">
+                <thead class="scrollhead">
+                    <tr>
+                        <th class="table2-id">No.</th>
+                        <th class="table2-name">Name</th>
+                        <th class="table2-kana">ふりがな</th>
+                        <th class="table2-college">College</th>
+                        <th class="table2-graduation">Grad</th>
+                        <th class="table2-email">Mail</th>
+                        <th class="table2-tel">Tel</th>
+                        <th class="table2-date">面談日程</th>
+                        
+                        
+
+                        
+                    </tr>
+                </thead>
+                <tbody class="scrollbody">
+                  <?php $num=0;?>  
+                @forelse ($event17 as $event17)
+                <?php $num++;?>
+                    <tr>
+                    <td class="table2-id"><?php echo $num?></td>
+                    <td class="table2-name">{{$event17->user_name}}</td>
+                    <td class="table2-kana">{{$event17->user_kana}}</td>
+                    <td class="table2-college">{{$event17->college}}</td>
+                    <td class="table2-graduation">{{$event17->graduation}}卒</td>
+                    <td class="table2-email"><a href="mailto:{{$event17->mail}}">{{$event17->mail}}</a></td>
+                    <td class="table2-tel"><a href="tel:{{$event17->tel}}">{{$event17->tel}}</a></td>
+                    <td class="table2-date"><a href="">{{$event17->date}}　{{$event17->start_time}}-{{$event17->end_time}}</a></td>
+                    </tr>
+                @empty
+                    <tr><td>現在参加者はいません</td></tr>
+                @endforelse
+                    
+            </table>
+            <table class="table table-striped table-sm eventkind" data-group="event18">
+                <thead class="scrollhead">
+                    <tr>
+                        <th class="table2-id">No.</th>
+                        <th class="table2-name">Name</th>
+                        <th class="table2-kana">ふりがな</th>
+                        <th class="table2-college">College</th>
+                        <th class="table2-graduation">Grad</th>
+                        <th class="table2-email">Mail</th>
+                        <th class="table2-tel">Tel</th>
+                        <th class="table2-date">面談日程</th>
+                        
+                        
+
+                        
+                    </tr>
+                </thead>
+                <tbody class="scrollbody">
+                  <?php $num=0;?>  
+                @forelse ($event18 as $event18)
+                <?php $num++;?>
+                    <tr>
+                    <td class="table2-id"><?php echo $num?></td>
+                    <td class="table2-name">{{$event18->user_name}}</td>
+                    <td class="table2-kana">{{$event18->user_kana}}</td>
+                    <td class="table2-college">{{$event18->college}}</td>
+                    <td class="table2-graduation">{{$event18->graduation}}卒</td>
+                    <td class="table2-email"><a href="mailto:{{$event18->mail}}">{{$event18->mail}}</a></td>
+                    <td class="table2-tel"><a href="tel:{{$event18->tel}}">{{$event18->tel}}</a></td>
+                    <td class="table2-date"><a href="">{{$event18->date}}　{{$event18->start_time}}-{{$event18->end_time}}</a></td>
+                    </tr>
+                @empty
+                    <tr><td>現在参加者はいません</td></tr>
+                @endforelse
+                    
+            </table>
+            <table class="table table-striped table-sm eventkind" data-group="event19">
+                <thead class="scrollhead">
+                    <tr>
+                        <th class="table2-id">No.</th>
+                        <th class="table2-name">Name</th>
+                        <th class="table2-kana">ふりがな</th>
+                        <th class="table2-college">College</th>
+                        <th class="table2-graduation">Grad</th>
+                        <th class="table2-email">Mail</th>
+                        <th class="table2-tel">Tel</th>
+                        <th class="table2-date">面談日程</th>
+                        
+                        
+
+                        
+                    </tr>
+                </thead>
+                <tbody class="scrollbody">
+                  <?php $num=0;?>  
+                @forelse ($event19 as $event19)
+                <?php $num++;?>
+                    <tr>
+                    <td class="table2-id"><?php echo $num?></td>
+                    <td class="table2-name">{{$event19->user_name}}</td>
+                    <td class="table2-kana">{{$event19->user_kana}}</td>
+                    <td class="table2-college">{{$event19->college}}</td>
+                    <td class="table2-graduation">{{$event19->graduation}}卒</td>
+                    <td class="table2-email"><a href="mailto:{{$event19->mail}}">{{$event19->mail}}</a></td>
+                    <td class="table2-tel"><a href="tel:{{$event19->tel}}">{{$event19->tel}}</a></td>
+                    <td class="table2-date"><a href="">{{$event19->date}}　{{$event19->start_time}}-{{$event19->end_time}}</a></td>
                     </tr>
                 @empty
                     <tr><td>現在参加者はいません</td></tr>

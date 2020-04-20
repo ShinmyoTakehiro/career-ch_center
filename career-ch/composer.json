@@ -19,14 +19,16 @@
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
-        "phpunit/phpunit": "^7.0",
-        "way/generators": "dev-feature/laravel-five-stable",
-        "xethron/migrations-generator": "^2.0"
+        "phpunit/phpunit": "^7.0"
+       
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "github-oauth": {
+            "github.com":"[9e53afb85fbd83537987110a3cee5db260eaab72]"
+        }
     },
     "extra": {
         "laravel": {
@@ -64,7 +66,8 @@
     "repositories": {
         "repo-name": {
             "type": "git",
-            "url": "git@github.com:jamisonvalenta/Laravel-4-Generators.git"
+            "url": "https://github.com/jamisonvalenta/Laravel-4-Generators.git"
+            
         }
     }
 }

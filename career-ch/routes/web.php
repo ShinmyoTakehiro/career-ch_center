@@ -15,8 +15,9 @@ use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
 
 
-Route::get('', 'SerchController@default');
+// Route::get('', 'SerchController@serch');
 Route::get('/', 'UsersController@index');
+
 // function () {
 //     $data =DB::connection('mysql_2') -> select('select * from wptestswpm_members_tbl;');
 //     return view('Users.index',['data'=>$data]);
@@ -63,8 +64,10 @@ Route::get('/event/selection','UsersController@selection');
 
 
 Route::get('/members','UsersController@member');
+Route::post('/members', 'UsersController@update');
 
 Route::get('/serch','SearchController@serch');
+Route::post('/serch','SearchController@serch');
 // function () {
 //     $data =DB::connection('mysql_2') -> select('select * from wptestswpm_members_tbl;');
 //     return view('Users.members',['data'=>$data]);

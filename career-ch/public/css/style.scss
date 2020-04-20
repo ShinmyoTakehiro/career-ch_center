@@ -1,6 +1,19 @@
 $font_color : #636b6f;
 $fonts:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji", 'Nunito', sans-serif;
 
+$breakpoints:(
+    'md':'screen and (min-width:768px)',
+    'lg':'screen and (min-width:992px)',
+    'xl':'screen and (min-width:1200px)',
+)!default;
+
+@mixin  mq($breakpoint: md) {
+    @media #{map-get($breakpoints,$breakpoint)}{
+        @content;
+    }
+}
+
+
 
 html{
    
@@ -69,6 +82,13 @@ html{
 
         }
 
+        .col-md-2{
+            @include mq(){
+            flex: 0 0 12%;
+            max-width: 12%;
+            }
+        }
+
         .selector-for-some-widget{
             box-sizing: border-box;
         }
@@ -78,15 +98,34 @@ html{
             height: 100vh;
         }
 
+
+        .col-lg-10{
+             @include mq(lg){
+              max-width: 88%;
+              flex: 88%;
+             }
+          }
+        
+        .col-md-9{
+            @include mq{
+            flex: 0 0 88%;
+            max-width: 88%;
+            }
+        }
+
+       
+
         [role="main"]{
-            padding-top: 52px;
-          .table{  
-                padding-bottom: 5%;
+            padding-top: 28px;
+            
+            .table-head{  
+                // padding-bottom: 4%;
                 width: auto;
+                margin-bottom:0;
             h2{
                 font-size: 1.8rem;
                 padding: 22px 0;
-                position: absolute;
+                // position: absolute;
                 &[data-group="full"]{
                     display: block;
                 }
@@ -135,12 +174,78 @@ html{
                 &[data-group="easy"]{
                     display: none;
                 }
+                &[data-group="event17"]{
+                    display: none;
+                }
+                &[data-group="event18"]{
+                    display: none;
+                }
+                &[data-group="event19"]{
+                    display: none;
+                }
+            }    
+        //   .table{  
+        //         padding-bottom: 3%;
+        //         width: auto;
+        //         margin-bottom:0;
+        //     h2{
+        //         font-size: 1.8rem;
+        //         padding: 22px 0;
+        //         // position: absolute;
+        //         &[data-group="full"]{
+        //             display: block;
+        //         }
+
+        //         &[data-group="fes"]{
+        //             display: none;
+        //         }
+        //         &[data-group="selection"]{
+        //             display: none;
+        //         }
+        //         &[data-group="womenf"]{
+        //             display: none;
+        //         }
+        //         &[data-group="ladyselct"]{
+        //             display: none;
+        //         }
+        //         &[data-group="fea"]{
+        //             display: none;
+        //         }
+        //         &[data-group="matching"]{
+        //             display: none;
+        //         }
+        //         &[data-group="requrutevent"]{
+        //                 display: none;
+        //             } 
+        //             &[data-group="interviewevent"]{
+        //             display: none;
+        //         } 
+        //         &[data-group="exhibition"]{
+        //             display: none;
+        //         } 
+        //         &[data-group="event10"]{
+        //             display: none;
+        //         }
+        //         &[data-group="event11"]{
+        //             display: none;
+        //         }&[data-group="event12"]{
+        //             display: none;
+        //         }&[data-group="event13"]{
+        //             display: none;
+        //         }&[data-group="event14"]{
+        //             display: none;
+        //         }&[data-group="event15"]{
+        //             display: none;
+        //         }    
+        //         &[data-group="easy"]{
+        //             display: none;
+        //         }
 
 
 
 
 
-            }
+        //     }
             }  
 
            .btn-group{
@@ -151,6 +256,14 @@ html{
                 margin-bottom: 10px;
             }
            } 
+
+
+           h2{
+               &.member-head{
+                   margin-top: 2rem;
+                   margin-bottom: 1rem;
+               }
+           }
         }
 
         .flex-center{
@@ -214,7 +327,16 @@ html{
             }    
             &[data-group="easy"]{
                 display: none;
-            }    
+            }   
+            &[data-group="event17"]{
+                display: none;
+            } 
+            &[data-group="event18"]{
+                display: none;
+            } 
+            &[data-group="event19"]{
+                display: none;
+            }  
 
         .scrollhead{
             display: block;
@@ -223,8 +345,10 @@ html{
         .scrollbody{
             display: block;
             overflow-y: scroll;
-            height: 600px;
+            height: 476px;
         }
+
+       
 
         .table-id{
             min-width: 65px;
@@ -238,6 +362,7 @@ html{
 
         .table-college{
             min-width: 200px;
+            max-width: 200px;
         }
 
         .table-grad{
@@ -256,12 +381,35 @@ html{
         }
         .table-email{
             // width: 298px;
-            min-width: 356px;
+            min-width: 315px;
         }
 
         .table-time{
-            min-width: 300px;
+            min-width: 260px;
             // width: 9999px;
+        }
+
+        .table-memo{
+            min-width: 300px;
+            .form-group{
+                margin-bottom: 0.5rem;
+            .form-control{
+                height: calc(1.5rem + 1px);
+                padding: .1rem .2rem;
+                font-size: 0.8rem;
+                width: 70%;
+                display: inline-block;
+            }
+
+            .btn-sm{
+                padding: .05rem .5rem;
+                font-size: .8rem;
+            }
+
+            .btn{
+                vertical-align:baseline;
+            }
+        }
         }
 
         .schedule{
@@ -340,4 +488,3 @@ html{
     } 
     }
 }
-

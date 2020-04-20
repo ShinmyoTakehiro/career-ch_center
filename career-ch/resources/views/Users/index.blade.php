@@ -44,6 +44,8 @@
                     <td class="table-since">{{$data->member_since}}</td>
                     <td class="table-tel"><a href="tel:{{$data->phone}}">{{$data->phone}}</a></td>
                     <td class="table-email"><a href="mailto:{{$data->email}}">{{$data->email}}</a></td>
+                    <td class="table-email">{{$data->txn_id}}</td>
+
                     @if($data->name =='稲田陽平' )
                             <td class="table-status"><div class="status-text">参加なし</div></td>
                     @else

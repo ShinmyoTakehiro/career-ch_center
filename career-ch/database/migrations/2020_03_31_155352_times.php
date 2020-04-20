@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserInformationsTable extends Migration
+class Times extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,7 @@ class CreateUserInformationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_informations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+        //
     }
 
     /**
@@ -26,6 +23,6 @@ class CreateUserInformationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_informations');
+        //
     }
 }

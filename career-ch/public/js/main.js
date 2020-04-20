@@ -11,9 +11,10 @@ $(function(){
         $(this).addClass('active');
      var e = $(this).data('group');   
      o.fadeOut(300),
-     $('.table [data-group*=' + e + ']').fadeIn(300)
+     $('#table [data-group*=' + e + ']').fadeIn(300)
     })
-});                     
+});                 
+    
 
 
 // moment.jsの時刻表示

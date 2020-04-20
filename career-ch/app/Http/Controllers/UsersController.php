@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Input;
 // use App\Http\Controllers;
 // use App;
 class UsersController extends Controller
@@ -15,28 +17,14 @@ class UsersController extends Controller
             // ->join('zeal-a_central.user_information', 'wptestswpm_members_tbl.last_name*', '=', 'user_information.user_name')
             
     $data2 = DB::table('user_information')->select('*')->get();
-    
-    // $data2 = DB::select('SELECT * FROM mysql_2.wptestswpm_members_tbl LEFT JOIN mysql.user_information ON user_information.user_name = wptestswpm_members_tbl.last_name');
-    
-    // $data2 = DB::table('mysql_2.wptestswpm_members_tbl')
-        // ->select('*')
-    //     // ->leftJoin('mysql.user_information','user_information.user_name','=','wptestswpm_members_tbl.last_name')
-        // ->get();
-    // $data = array('data1' =>DB::connection('mysql_2')->table('wptestswpm_members_tbl')->select('*')->get() , 'data2'=> DB::table('user_information')->select('*')->get())
-    //         ;
-    
+       #キーワード受け取り
+       $keyword = $request->input('keyword');
 
-
-
-
-    return view('Users.index',['data'=>$data,'data2'=>$data2]);
-    // return view('Users.index',compact('data','data2'));
-    // return view('Users.index')->with($data);
-// var_dump($data2);
+  
+    return view('Users.index',['data'=>$data,'data2'=>$data2])->with('keyword',$keyword);
     }
 
     public function event(Request $request){
-        // $data =DB::select('select * from user_information;');
         $data =DB::table('user_information')
         ->groupBy('user_name','college','graduation','event_id','date','start_time')
         ->orderBy('id','desc')
@@ -57,13 +45,84 @@ class UsersController extends Controller
         $event13 = DB::table('user_information')->where('event_id','13')->groupBy('user_name','college','graduation','date','start_time')->orderBy('date','desc')->get();
         $event14 = DB::table('user_information')->where('event_id','14')->groupBy('user_name','college','graduation','date','start_time')->orderBy('date','desc')->get();
         $event15 = DB::table('user_information')->where('event_id','15')->groupBy('user_name','college','graduation','date','start_time')->orderBy('date','desc')->get();
-        $easy = DB::table('user_information')->where('event_id','16')->groupBy('user_name','college','graduation','date','start_time')->orderBy('date','desc')->get();
+        $easy =    DB::table('user_information')->where('event_id','16')->groupBy('user_name','college','graduation','date','start_time')->orderBy('date','desc')->get();
+        $event17 = DB::table('user_information')->where('event_id','17')->groupBy('user_name','college','graduation','date','start_time')->orderBy('date','desc')->get();
+        $event18 = DB::table('user_information')->where('event_id','18')->groupBy('user_name','college','graduation','date','start_time')->orderBy('date','desc')->get();
+        $event19 = DB::table('user_information')->where('event_id','19')->groupBy('user_name','college','graduation','date','start_time')->orderBy('date','desc')->get();
+
+
+        $data2 = DB::connection('mysql_2')
+        ->table('wptestswpm_members_tbl')
+        ->get();
+
+         #キーワード受け取り
+         $keyword = $request->input('keyword');
+
+         #ページネーション
+        return view('Users.event',['data'=>$data,'data2'=>$data2,'fes'=>$fes,'select'=>$select,'festivalw'=>$festivalw,
+                                    'selectg'=>$selectg,'fea'=>$fea,'matching'=>$matching,'requrut'=>$requrutevent,
+                                    'interview'=>$interviewevent,'exhibition'=>$exhibition,'event10'=>$event10,'event11'=>$event11,                                   
+                                    'event12'=>$event12,'event13'=>$event13,'event14'=>$event14,'event15'=>$event15,'easy'=>$easy,'event17'=>$event17,'event18'=>$event18,'event19'=>$event19])
+                                    ->with('keyword',$keyword);
+
+       
+    }
+
+
+    
+
+    public function member(Request $request){
+        $data =DB::connection('mysql_2') 
+        -> table('wptestswpm_members_tbl')
+        ->join('wptestswpm_form_builder_custom', function ($join){
+            $join->on('wptestswpm_members_tbl.member_id','=','wptestswpm_form_builder_custom.user_id')
+                 ->whereIn('wptestswpm_form_builder_custom.field_id',[53,158,166,433,208,229,251,283,304,330,381,411]);
+        })
+
+        ->orderBy('member_id','desc')
+        ->get();
+
+         #キーワード受け取り
+         $keyword = $request->input('keyword');
+
+    return view('Users.members',['data'=>$data] )->with('keyword',$keyword);
+    }
+
+    public function update(Request $request){
+
+        // POST送信した内容をdbに保存。submitをどれ押すかによって条件分岐
+        $time = new Carbon(Carbon::now()->format('Y/m/d H:i'));
+
+        if (Input::get('timey')) {
+            DB::connection('mysql_2')
+            ->table('wptestswpm_members_tbl')
+            ->where('member_id',$request->member_id)
+            ->update(['txn_id'=>$time,]);
+        } elseif (Input::get('add')){
+           
+            DB::connection('mysql_2')
+            ->table('wptestswpm_members_tbl')
+            ->where('member_id',$request->member_id)
+            ->update(['notes'=>$request->text]);
+            
+        }
+        
+
+        $data =DB::connection('mysql_2') 
+        -> table('wptestswpm_members_tbl')
+        ->join('wptestswpm_form_builder_custom', function ($join){
+            $join->on('wptestswpm_members_tbl.member_id','=','wptestswpm_form_builder_custom.user_id')
+                 ->whereIn('wptestswpm_form_builder_custom.field_id',[53,158,166,433,208,229,251,283,304,330,381,411]);
+        })
+        ->orderBy('member_id','desc')
+        ->get();
 
          #キーワード受け取り
          $keyword = $request->input('keyword');
 
          #クエリ生成
          $query = DB::query();
+         $query2 = DB::connection('mysql_2')->table('wptestswpm_members_tbl');
  
          #もしキーワードがあったら
          if (!empty($keyword)) 
@@ -75,40 +134,24 @@ class UsersController extends Controller
              ->orWhere('date','like','%'.$keyword.'%')
              ->orWhere('start_time','like','%'.$keyword.'%')
              ->orWhere('end_time','like','%'.$keyword.'%');
+
+             $query2->where('last_name','like','%'.$keyword.'%')
+             ->orWhere('first_name','like','%'.$keyword.'%')
+             ->orWhere('member_since','like','%'.$keyword.'%')
+             ->orWhere('email','like','%'.$keyword.'%')
+             ->orWhere('phone','like','%'.$keyword.'%')
+             // ->orWhere('txn_id','like','%'.$keyword.'%')
+             ->orWhere('notes','like','%'.$keyword.'%');
          }
  
          #ページネーション
-         $serch = $query->orderBy('id','desc');
-                                      
-        return view('Users.event',['data'=>$data,'fes'=>$fes,'select'=>$select,'festivalw'=>$festivalw,
-                                    'selectg'=>$selectg,'fea'=>$fea,'matching'=>$matching,'requrut'=>$requrutevent,
-                                    'interview'=>$interviewevent,'exhibition'=>$exhibition,'event10'=>$event10,'event11'=>$event11,                                   
-                                    'event12'=>$event12,'event13'=>$event13,'event14'=>$event14,'event15'=>$event15,'easy'=>$easy])
-                                    ->with('serch',$serch)->with('keyword',$keyword);
+         $serch = $query->orderBy('id','desc');  
+         $serch2 = $query2->groupBy('last_name','first_name','member_since','email','phone','notes')->orderBy('last_name','desc')->get();//->paginate();
 
-       
+        return view('Users.members',['data'=>$data])->with('serch',$serch)->with('serch2',$serch2)->with('keyword',$keyword);
     }
 
 
-    
 
-    public function member(Request $request){
-        $data =DB::connection('mysql_2') 
-        -> table('wptestswpm_members_tbl')
-
-        // -> join('wptestswpm_form_builder_custom','wptestswpm_members_tbl.member_id','=','wptestswpm_form_builder_custom.user_id')
-        // // ->where('field_id',53)
-        // 
-        // 
-
-        ->join('wptestswpm_form_builder_custom', function ($join){
-            $join->on('wptestswpm_members_tbl.member_id','=','wptestswpm_form_builder_custom.user_id')
-                 ->whereIn('wptestswpm_form_builder_custom.field_id',[53,158,166,433,208,229,251,283,304,330,381,411]);
-        })
-
-        ->orderBy('member_id','desc')
-        ->get();
-    return view('Users.members',['data'=>$data] );
-    }
 
 }
